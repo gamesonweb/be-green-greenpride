@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Plateau de jeu et dé 3D avec Babylon.js</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+        
+        #rollDiceButton {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 20px;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+</head>
+
+<body>
+<canvas id="renderCanvas"></canvas>
+<button id="rollDiceButton">Lancer le dé</button>
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        const canvas = document.getElementById('renderCanvas');
+        const engine = new BABYLON.Engine(canvas, true);
+        
+        const diceTextures = [
+            'img/uno.png',
+            'img/dos.png',
+            'img/tres.png',
+            'img/quatro.png',
+            'img/cinquo.png',
+            'img/seis.png'
+        ];
+        
+        let currentPlayer = 0;
+        const players = [];
+        const challenges = [
+            "Défi 1",
+            "Défi 2",
+            "Défi 3",
+            "Défi 4",
+            "Défi 5",
+            "Défi 6"
+        ];
+        
+        const displayChallenge = (challengeText) => {
+            const challengeTextMesh = new BABYLON.GUI.TextBlock();
+            challengeTextMesh.text = challengeText;
+            challengeTextMesh.color = "black";
+            challengeTextMesh.fontSize = 24;
+            advancedTexture.addControl(challengeTextMesh);
+            setTimeout(() => {
+                advancedTexture.removeControl(challengeTextMesh);
+            }, 50);
+        };
+        
+        const rollDice = (dice) => {
+            const duration = 100;
+            const initialRotation = dice.rotation.clone();
+            const randomRotation = new BABYLON.Vector3(Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI);
+            const randomNumber = Math.floor(Math.random() * 6) + 1;
+            
+            dice.material.diffuseTexture = new BABYLON.Texture(diceTextures[randomNumber - 1], scene);
+            
+            BABYLON.Animation.CreateAndStartAnimation('rollDiceAnimation', dice, 'rotation', 60, duration, initialRotation, initialRotation.add(randomRotation), BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+            
+            players[currentPlayer].position.x += randomNumber;
+            currentPlayer = (currentPlayer + 1) % players.length;
+    
+            displayChallenge(challenges[randomNumber - 1]);
+        };
+    
+        const movePlayer = (playerIndex, steps) => {
+            const player = players[playerIndex];
+        
+            const tileSize = 1;
+            const tileSpacing = 0.1;
+            const boardSize = 6;
+        
+            const startPosition = {
+                x: -2.5,
+                z: -2.5
+            };
+        
+            const newPosition = {
+                x: startPosition.x + ((player.moveCount + steps) % boardSize) * (tileSize + tileSpacing),
+                z: startPosition.z + (Math.floor((player.moveCount + steps) / boardSize) % boardSize) * (tileSize + tileSpacing)
+            };
+        
+            player.moveCount += steps;
+        
+            const moveAnimation = new BABYLON.Animation("moveAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+            const keys = [];
+            keys.push({
+                frame: 0,
+                value: player.position
+            });
+            keys.push({
+                frame: 30,
+                value: new BABYLON.Vector3(newPosition.x, player.position.y, newPosition.z)
+            });
+            moveAnimation.setKeys(keys);
+        
+            player.animations.push(moveAnimation);
+            scene.beginAnimation(player, 0, 30, false);
+        };
+    
+        const createScene = function () {
+            const scene = new BABYLON.Scene(engine);
+            const advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+    
+            const camera = new BABYLON.ArcRotateCamera('camera', -Math.PI / 2, Math.PI / 4, 15, new BABYLON.Vector3(0, 0, 0), scene);
+            camera.attachControl(canvas, true);
+        
+            const light = new BABYLON.HemisphericLight('light', new BABYLON.Vector3(0, 1, 0), scene);
+        
+            const board = BABYLON.MeshBuilder.CreateBox('board', {width: 6, height: 0.5, depth: 6}, scene);
+            board.position.y = -1;
+        
+            const tileSize = 1;
+            const tileSpacing = 0.1;
+            const tilesPerRow = 6;
+            const tilesPerColumn = 6;
+        
+            for (let row = 0; row < tilesPerRow; row++) {
+                for (let col = 0; col < tilesPerColumn; col++) {
+                    if (row === 0 || row === tilesPerRow - 1 || col === 0 || col === tilesPerColumn - 1) {
+                        const tile = BABYLON.MeshBuilder.CreateBox(`tile_${row}_${col}`, {width: tileSize, height: 0.1, depth: tileSize}, scene);
+                        tile.position.x = (row - (tilesPerRow / 2)) * (tileSize + tileSpacing) + tileSize / 2;
+                        tile.position.y = -0.7;
+                        tile.position.z = (col - (tilesPerColumn / 2)) * (tileSize + tileSpacing) + tileSize / 2;
+                    }
+                }
+            }
+        
+            for (let i = 0; i < 2; i++) {
+                const pawn = BABYLON.MeshBuilder.CreateCylinder(`pawn_${i}`, {diameter: 0.5, height: 1, tessellation: 32}, scene);
+                pawn.position.y = 0;
+                pawn.position.x = -2.5 + i;
+                pawn.position.z = -2.5;
+                players.push(pawn);
+            }
+        
+            const dice = BABYLON.MeshBuilder.CreateBox('dice', {width: 1, height: 1, depth: 1}, scene);
+            dice.position.y = 0.5;
+            dice.position.x = 5;
+            dice.position.z = 0;
+        
+            // Apply a dice texture
+            const diceMaterial = new BABYLON.StandardMaterial('diceMaterial', scene);
+            diceMaterial.diffuseTexture = new BABYLON.Texture(diceTextures[0], scene);
+            dice.material = diceMaterial;
+    
+            return scene;
+        };
+    
+        const scene = createScene();
+    
+        engine.runRenderLoop(function () {
+            scene.render();
+        });
+    
+        window.addEventListener('resize', function () {
+            engine.resize();
+        });
+    
+        document.getElementById('rollDiceButton').addEventListener('click', function () {
+            const dice = scene.getMeshByName('dice');
+            rollDice(dice);
+        });
+    });
+</script>
+</body>
+</html>
