@@ -5,3 +5,5 @@ be-green-greenpride created by GitHub Classroom
 - SAVE Pierre
 - STRINGAT Théo
 - TABBAA Siham
+
+Présents à la remise des prix.
