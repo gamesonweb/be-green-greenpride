@@ -8,5 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="babylon" level="application" />
+    <orderEntry type="library" name="babylon.gui" level="application" />
+    <orderEntry type="library" name="pep" level="application" />
   </component>
 </module>
