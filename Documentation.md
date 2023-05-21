@@ -1,4 +1,4 @@
-#GreenPride
+# GreenPride
 
 1. GreenPride est un jeu de société pour une soirée avec 2 joueurs.
 2. Le jeu se joue sur un plateau virtuel 3D avec des cases.
@@ -8,7 +8,7 @@
 6. Certaines cases sur le plateau peuvent imposer des gages, comme boire un certain nombre de gorgées, faire un mini jeu, un shot, etc.
 7. Le joueur qui atteint la ligne d'arrivée en premier gagne la partie.
 
-##Fonctionnalités
+## Fonctionnalités
 - Un plateau pour présenter les différentes cases du jeu
 - 1 dès
 - Il y a des défis en fonction de la case sur laquel le joueur a attérit
