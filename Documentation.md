@@ -1,5 +1,9 @@
 # GreenPride
 
+## Accès au jeu
+https://stabbaa24.github.io/GreenPride/
+
+## Explication
 1. GreenPride est un jeu de société pour une soirée avec 2 joueurs.
 2. Le jeu se joue sur un plateau virtuel 3D avec des cases.
 3. Le but du jeu est d'atteindre la ligne d'arrivée en premier.
