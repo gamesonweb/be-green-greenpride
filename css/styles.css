@@ -38,7 +38,7 @@ html, body {
     font-size: 20px;
     padding: 20px;
     color: white;
-    background-color: #274B5F;
+    background-color: darkgreen;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -46,7 +46,7 @@ html, body {
 }
 
 #myBtn:hover {
-    background-color: #58798F;
+    background-color: darkseagreen;
 }
 
 .popup {

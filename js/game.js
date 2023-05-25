@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('music').volume = 0.2;
     let popup = document.getElementById("popup");
     let btn = document.getElementById("myBtn");
     let span = document.getElementsByClassName("close")[0];
