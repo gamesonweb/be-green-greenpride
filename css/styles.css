@@ -65,14 +65,14 @@ html, body {
     background-color: #f5f5f5;
     margin: 15% auto;
     padding: 30px;
-    border: 1px solid #888;
+    border: 1px solid dimgrey;
     width: 60%;
     border-radius: 10px;
     box-shadow: 0 4px 16px 0 rgba(0,0,0,0.5);
 }
 
 .close {
-    color: #aaaaaa;
+    color: dimgrey;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -88,7 +88,7 @@ html, body {
 .styled-list, .styled-list ul {
     padding: 0 0 0 30px;
     list-style: none;
-    color: #333;
+    color: dimgrey;
 }
 
 .styled-list li {
@@ -105,5 +105,37 @@ html, body {
 
 .styled-list span {
     font-weight: bold;
-    color: #274B5F;
 }
+
+.end-game-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: darkseagreen;
+    border: 2px solid black;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.restart-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    padding: 20px;
+    color: black;
+    background-color: seagreen;
+    border: none;
+    border-radius: 5px;
+    cursor: crosshair;
+    transition: background-color 0.3s ease;
+}
+
+.restart-button:hover {
+    background-color: yellowgreen;
+    color: black;
+}
+

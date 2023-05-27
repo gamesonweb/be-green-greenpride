@@ -16,7 +16,19 @@
 </audio>
 <canvas id="renderCanvas"></canvas>
 <button id="rollDiceButton">Lancer le dé</button>
+<button id="restartButton" class="restart-button" style="display: none;">Recommencer la partie</button>
 <button id="myBtn">Règles</button>
+
+<div id="player" class="popup">
+    <div class="popup-content">
+        <label for="playerOne">Joueur 1 :</label>
+        <input type="text" id="playerOne" name="playerOne"><br>
+        <label for="playerTwo">Joueur 2 :</label>
+        <input type="text" id="playerTwo" name="playerTwo"><br>
+        <button id="submit">Commencer</button>
+    </div>
+</div>
+
 <div id="popup" class="popup">
     <div class="popup-content">
         <span class="close">&times;</span>
@@ -41,7 +53,6 @@
         </ul>
     </div>
 </div>
-
 <script src="js/game.js"></script>
 </body>
 </html>

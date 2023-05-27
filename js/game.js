@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     window.onclick = function(event) {
-        if (event.target == popup) {
+        if (event.target === popup) {
             popup.style.display = "none";
         }
     }
@@ -151,8 +151,27 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
     const endGame = (playerIndex) => {
-        displayChallenge(`Joueur ${playerIndex + 1} a gagné ! \n FIN DU JEU`);
+        const endGameText = `Joueur ${playerIndex + 1} a gagné !`;
+
+        const endGamePanel = document.createElement("div");
+        endGamePanel.className = "end-game-panel";
+
+        const endGameTextElement = document.createElement("h2");
+        endGameTextElement.innerText = endGameText;
+
+        let restartButton = document.getElementById("restartButton");
+        restartButton.style.display = "block";
+
+        restartButton.addEventListener("click", () => {
+            location.reload();
+        });
+
+        endGamePanel.appendChild(endGameTextElement);
+        document.body.appendChild(endGamePanel);
+
+        document.getElementById('rollDiceButton').disabled = true;
     };
+
 
     const createScene = function () {
         const scene = new BABYLON.Scene(engine);
