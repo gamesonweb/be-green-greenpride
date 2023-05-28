@@ -17,7 +17,7 @@
 <canvas id="renderCanvas"></canvas>
 <button id="rollDiceButton">Lancer le dé</button>
 <button id="restartButton" class="restart-button" style="display: none;">Recommencer la partie</button>
-<button id="myBtn">Règles</button>
+<button id="rules">Règles</button>
 
 <div id="player" class="popup">
     <div class="popup-content">
@@ -30,29 +30,62 @@
 </div>
 
 <div id="popup" class="popup">
-    <div class="popup-content">
+    <div class="popup-content scrollbar">
         <span class="close">&times;</span>
+        
         <h2>Explication des cases</h2>
         <ul class="styled-list">
-            <li>Si une case a un moins alors tu distribues le nombre de gorgées écrit.</li>
-            <li>Si une case a un plus alors tu bois le nombre de gorgées écrit.</li>
-            <li>Si une case a un shot alors tu bois le nombre de shots écrit.</li>
-            <li>Shot mystère : Ton ami te crée un spécial shot.</li>
-            <li>Pile ou Face, si tu perds, tu bois !</li>
-            <li>Péage :
+    
+            <div class="container">
+                <img src="img/challenge/minusThreeSlip.png" alt="moins">
+                <div class="text">Si une case a un moins alors tu distribues le nombre de gorgées écrit.</div>
+              </div>
+    
+            </br>
+            <div class="container">
+                <img src="img/challenge/plusFiveSlip.png" alt="moins">
+                <div class="text">Si une case a un plus alors tu bois le nombre de gorgées écrit.</div>
+            </div>
+    
+            </br>
+            <div class="container">
+                <img src="img/challenge/minusOneShot.png" alt="moins">
+                <div style="padding : 0.3em;">ou</div>
+                <img src="img/challenge/plusOneShot.png" alt="moins">
+                <div class="text">Si une case a un shot et qu'elle possède un moins, alors tu distribues. Si au contraire elle possède un plus tu bois</div>
+            </div>
+    
+            </br>
+            <div class="container">
+                <img src="img/challenge/mysteryShot.png" alt="moins">
+                <div class="text">Shot mystère : Ton ami te crée un spécial shot.</div>
+            </div>
+    
+            </br>
+            <div class="container">
+                <img src="img/challenge/pileFace.png" alt="moins">
+                <div class="text">Pile ou Face, si tu perds, tu bois !</div>
+            </div>
+    
+            </br>
+            <div class="container">
+                <img src="img/challenge/peage.png" alt="moins">
+                <div class="text">Péage :</div>
+            </div>
+            </br>
                 <ul>
-                    <li><span>Péage</span> est un jeu de cartes divertissant qui peut se jouer en tête-à-tête ou en groupe. Voici comment jouer :</li>
-                    <li><span>Préparation</span> : Alignez les cartes faces retournées. De temps en temps, ajoutez une carte face cachée - c'est un péage. Les cartes restantes sont mises de côté, faces cachées.</li>
-                    <li><span>Longueur de la partie</span> : Vous décidez de la longueur du jeu et du nombre de péages en fonction de votre envie de boire !</li>
-                    <li><span>Jouer une carte</span> : Pour chaque carte retournée, un joueur doit prédire si la prochaine carte sera "plus haute", "plus basse" ou "égale". Une nouvelle carte est alors tirée du paquet restant et placée sur la carte retournée.</li>
-                    <li><span>Avancer ou reculer</span> : Si la prédiction est correcte (par exemple, un As est sur la table, le joueur annonce "Moins" et retourne un Deux), le joueur avance d'une carte. Sinon, le joueur recule d'une carte et doit boire.</li>
-                    <li><span>Rencontre avec un péage</span> : Si un joueur tombe sur un "péage" en avançant ou en reculant, il doit boire et avancer/reculer d'une carte supplémentaire, selon la direction.</li>
-                    <li><span>But du jeu</span> : Le but est de faire un aller-retour complet sur les cartes alignées. Si vous manquez de cartes avant la fin du jeu, c'est cul-sec !</li>
+                    <li style="padding-bottom: 1em;"><span>Péage</span> est un jeu de cartes divertissant qui peut se jouer en tête-à-tête ou en groupe.</li>
+                    <li style="padding-bottom: 1em;"><span>But du jeu du péage</span> : Le but est de faire un aller-retour complet sur les cartes alignées. Si vous manquez de cartes avant la fin du jeu, c'est cul-sec ! Voici comment jouer :</li>
+                    <li style="padding-bottom: 1em;"><span>Préparation</span> : Alignez les cartes faces retournées. De temps en temps, ajoutez une carte face cachée - c'est un péage. Les cartes restantes sont mises de côté, faces cachées.</li>
+                    <li style="padding-bottom: 1em;"><span>Longueur de la partie</span> : Vous décidez de la longueur du jeu et du nombre de péages en fonction de votre envie de boire !</li>
+                    <li style="padding-bottom: 1em;"><span>Jouer une carte</span> : Pour chaque carte retournée, un joueur doit prédire si la prochaine carte sera "plus haute", "plus basse" ou "égale". Une nouvelle carte est alors tirée du paquet restant et placée sur la carte retournée.</li>
+                    <li style="padding-bottom: 1em;"><span>Avancer ou reculer</span> : Si la prédiction est correcte (par exemple, un As est sur la table, le joueur annonce "Moins" et retourne un Deux), le joueur avance d'une carte. Sinon, le joueur recule d'une carte et doit boire.</li>
+                    <li style="padding-bottom: 1em;"><span>Rencontre avec un péage</span> : Si un joueur tombe sur un "péage" en avançant ou en reculant, il doit boire et avancer/reculer d'une carte supplémentaire, selon la direction.</li>
                 </ul>
-            </li>
         </ul>
     </div>
-</div>
+    </div>
+
 <script src="js/game.js"></script>
 </body>
 </html>

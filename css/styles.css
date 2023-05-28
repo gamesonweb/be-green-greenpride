@@ -1,3 +1,7 @@
+body {
+    font-family: "Bookman Old Style";
+}
+
 html, body {
     width: 100%;
     height: 100%;
@@ -31,7 +35,17 @@ html, body {
     color: white;
 }
 
-#myBtn {
+/* POPUP RULES */
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+    padding: 0;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 0.5em black;
+}
+
+#rules {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -45,7 +59,7 @@ html, body {
     transition: background-color 0.3s ease;
 }
 
-#myBtn:hover {
+#rules:hover {
     background-color: darkseagreen;
 }
 
@@ -62,17 +76,18 @@ html, body {
 }
 
 .popup-content {
-    background-color: #f5f5f5;
-    margin: 15% auto;
-    padding: 30px;
-    border: 1px solid dimgrey;
-    width: 60%;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.5);
+    background-color: #8BB47A;
+    margin: 5% auto;
+    padding: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    opacity: 0.9;
+    width: 80%;
+    border-color: whitesmoke;
+    box-shadow: #9DE781 0 0 3em;
 }
 
 .close {
-    color: dimgrey;
+    color: #35751A;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -88,7 +103,7 @@ html, body {
 .styled-list, .styled-list ul {
     padding: 0 0 0 30px;
     list-style: none;
-    color: dimgrey;
+    color: #333;
 }
 
 .styled-list li {
@@ -139,3 +154,68 @@ html, body {
     color: black;
 }
 
+/* END POPUP RULES */
+
+img {
+    width: 10%;
+    height: 10%;
+    border: 1px solid rgb(0, 0, 0);
+    border-color: black;
+    box-shadow: #9DE781 0 0 1em;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+  
+  img {
+    float:left;
+    position: static;
+    width: 10%;
+    max-width: 70px;
+    min-width: 70px;
+
+  }
+  
+  .text {
+    text-align: left;
+    padding-left: 1em;
+  }
+
+  
+/* scroll bar */
+
+/* Style pour la boîte de défilement */
+.scrollbar {
+    height: 700px; /* Hauteur fixe pour la boîte de défilement */
+    overflow-y: scroll; /* Activer la barre de défilement verticale */
+    position: relative; /* Positionnement relatif pour les pseudo-éléments */
+  }
+  
+  /* Style pour la barre de défilement */
+  .scrollbar::-webkit-scrollbar {
+    width: 8px; /* Largeur de la barre de défilement */
+  }
+  
+  /* Style pour le rail de la barre de défilement */
+  .scrollbar::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur de fond du rail */
+  }
+  
+  /* Style pour le curseur de la barre de défilement */
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #35751A; /* Couleur du curseur */
+    border-radius: 5px; /* Bordure arrondie */
+  }
+  
+  /* Style pour le coin de la barre de défilement */
+  .scrollbar::-webkit-scrollbar-corner {
+    background-color: #f1f1f1; /* Couleur de fond du coin */
+  }
+  
+  /* Style pour les boutons de la barre de défilement */
+  .scrollbar::-webkit-scrollbar-button {
+    display: none; /* Masquer les boutons */
+  }
