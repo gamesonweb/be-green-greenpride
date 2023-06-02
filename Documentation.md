@@ -1,5 +1,4 @@
 # GreenPride
-
 ## Accès au jeu
 https://stabbaa24.github.io/GreenPride/
 
