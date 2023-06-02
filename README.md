@@ -8,7 +8,6 @@ be-green-greenpride created by GitHub Classroom
 Présents à la remise des prix.
 
 # Présentation de l'équipe
-L'équipe GreenPride
 
 Nous sommes une équipe composée de trois passionnés de jeux, étudiants en L3 MIAGE, tous unis par notre intérêt pour la programmation web et notre volonté de créer des expériences de jeu innovantes. En participant au concours Games on Web, nous avons combiné nos compétences et nos centres d'intérêts pour créer un jeu de société 3D basé sur l'alcool.
 
